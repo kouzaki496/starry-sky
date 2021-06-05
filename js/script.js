@@ -15,10 +15,10 @@ window.addEventListener('load', init);
 
         // sceneをセットする
         const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2( 0x0000FF, 0.0003 );//後方の物体をぼかす
+        scene.fog = new THREE.FogExp2( 0x0016FF, 0.00035 );//後方の物体をかすませる
 
         // cameraをセットする
-        const camera = new THREE.PerspectiveCamera(80, window.innerWidth/window.innerHeight, 700, 3000 );
+        const camera = new THREE.PerspectiveCamera(90, window.innerWidth/window.innerHeight, 700, 3000 );
         
         
 
@@ -29,12 +29,13 @@ window.addEventListener('load', init);
           const vertices = [];
 
           // 配置する範囲
-          const SIZE = 6000;
+          const SIZE = 2500;
           // 配置する個数
           const LENGTH = 30000;
+          const POINT_NUM = 9000;
           
           //星を配置する
-          for (let i = 0; i < LENGTH; i++) {
+          for (let i = 0; i < POINT_NUM; i++) {
             const x = SIZE * (Math.random() - 0.5);
             const y = SIZE * (Math.random() - 0.5);
             const z = SIZE * (Math.random() - 0.5);
@@ -48,7 +49,7 @@ window.addEventListener('load', init);
 
           // materialを作成
           const material = new THREE.PointsMaterial({
-            size: 6,
+            size: 4.5,
             color: 0xffffff,
           });
 
@@ -61,14 +62,14 @@ window.addEventListener('load', init);
 
         // 毎フレーム時に実行されるループイベント
         function tick() {
-          rot += 1;
+          rot += 0.07;
 
           // ラジアンに変換する
           const radian = (rot * Math.PI) / 180;
           // 角度に応じてカメラの位置を設定
           camera.position.x = 1000 * Math.sin(radian);
           camera.position.z = 1000 * Math.cos(radian);
-          // 原点方向を見つめる
+          // カメラを中央に指定
           camera.lookAt(new THREE.Vector3(0, 0, 0));
 
           // レンダリング
