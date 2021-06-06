@@ -29,16 +29,16 @@ window.addEventListener('load', init);
           const vertices = [];
 
           // 配置する範囲
-          const SIZE = 2500;
+          const size = 2500;
           // 配置する個数
           const LENGTH = 30000;
-          const POINT_NUM = 9000;
+          const pointNum = 9000;
           
           //星を配置する
-          for (let i = 0; i < POINT_NUM; i++) {
-            const x = SIZE * (Math.random() - 0.5);
-            const y = SIZE * (Math.random() - 0.5);
-            const z = SIZE * (Math.random() - 0.5);
+          for (let i = 0; i < pointNum; i++) {
+            const x = size * (Math.random() - 0.5);
+            const y = size * (Math.random() - 0.5);
+            const z = size * (Math.random() - 0.5);
 
             vertices.push(x, y, z);
           }
@@ -52,6 +52,7 @@ window.addEventListener('load', init);
             size: 4.5,
             color: 0xffffff,
           });
+          
 
           // 物体を作成
           const mesh = new THREE.Points(geometry, material);
